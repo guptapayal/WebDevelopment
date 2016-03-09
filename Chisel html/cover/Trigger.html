@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trigger</title>
+<script src="jquery-1.9.1.js"></script>
+<script>
+$(document).ready(function() {
+	//location.href = "media://m444/play"
+	
+	$("#myform").on("submit",function() {
+		//alert("wrong");
+		
+		var valu = $(".enter").val();
+		
+		if ((valu == "virat") || (valu == "Virat") || (valu == "kohli") || (valu == "Kohli") || (valu == "virat kohli") || (valu == "Virat kohli") || (valu == "virat Kohli") || (valu == "Virat Kohli")) {
+			
+			
+			//$(".a").trigger("click");
+			//$(".a").click();
+			
+			//$(".b").delay(3000).trigger("click");
+			
+			a();//b();
+			
+			//$(".a").val("");
+			//alert("wrong");
+			
+			/*setTimeout(function() {
+				//$(".b").trigger("click");
+				alert("Triggered");
+			},5000);*/
+			
+			
+		}
+		else {
+			
+			 $("#img").show();
+    return false;
+		}
+		
+		function a() {
+			alert("tt");
+				$(".b").stop().delay(3000).trigger("click");
+			}
+	});
+	
+	
+});
+</script>
+<style>
+body {
+	margin:0px;
+	padding:0px;
+	background:none;
+}
+#wrapper {
+	position:relative;
+	width:768px;
+	height:1024px;
+	margin:0px auto;
+	padding:0px;
+}
+.bg {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:768px;
+	height:1024px;
+	margin:0px;
+	padding:0px;
+	z-index:8;
+}
+.content {
+	position: absolute;
+	top: 260px;
+	left: 248px;
+	width: 350px;
+	height: 100px;
+	margin: 0px;
+	padding: 0px;
+	z-index: 9;
+}
+#img{
+	display:none;
+	position: absolute;
+	top: 322px;
+	left: 311px;
+	width: 86px;
+	height: 18px;
+	margin: 0px;
+	z-index: 999;
+}
+input[type=text] {
+background:none;
+border:0px none;
+  width : 212px;
+  height:40px;
+  -webkit-appearance: none;
+  font-family:Corbert regular;
+  font-size:24pt;
+  color:#A7A9AB;
+  text-align:center;
+}
+
+input[type=submit] { 
+background:none;
+border:0px none;
+font-size:1px;
+width : 100px;
+height:50px;
+
+
+
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+	<div class="bg"><img src="ref_01.jpg"  alt="" width="768" height="1024" usemap="#Map"/>
+      <map name="Map">
+        <area shape="rect" coords="678,22,687,25" href="media://m466/play" class="a">
+     
+        <area shape="rect" coords="600,9,608,14" href="jump://2"  class="b">
+      </map>
+	</div>
+  <div id="img"> <img src="try again.png" alt="" width="86" height="18" border="0"/></div>
+   	<div class="content">
+		<form name="myform" id="myform">
+			<input type="text" class="enter" value="" />
+			<input type="submit">
+		</form>
+	</div>
+</div>
+</body>
+</html>

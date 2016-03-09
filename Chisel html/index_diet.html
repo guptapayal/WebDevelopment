@@ -1,0 +1,729 @@
+    <!doctype html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Diet-Plan</title>
+    <link rel="stylesheet" href="fonts.css" type="text/css" charset="utf-8" />
+    <script src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.carouFredSel-6.2.1.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.touchSwipe.min.js"></script>
+    
+    <style>
+    body{
+        margin:0px;
+        padding:0px;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-touch-callout: none;
+       -webkit-user-select: none;
+    }
+    
+    .wrapper{
+        position:relative;
+        width:768px;
+        height:1024px;
+        top:0px;
+        left:0px;
+        overflow:hidden !important;
+        font-family:'Conv_Corbert-Regular',Sans-Serif;
+    
+    }
+    .diet_plan{
+        position:absolute;
+        top:285px;
+        left:30px;
+        z-index:999;
+    }
+    
+    .food_timings{
+        float:left;
+        position:absolute;
+        width:678px;
+        height:65px;
+        left:41px;
+        bottom:155px;
+        z-index:9999;
+    }
+    
+    .food_timings img{
+        padding-left:12px;
+    }
+    
+    .items{
+        position:absolute;
+        width: 708px;
+        height: 801px;
+        left:30px;
+        top:175px;
+        display:none;
+        z-index:99999999;
+    }
+    
+    #popup{
+        position:absolute;
+        width:768px;
+        height:1024px;
+		top:0px;
+		left:0px;
+        display:none;
+        z-index:999999999;
+    }
+    .pano{
+        position:absolute;
+        width:658px;
+        height:594px;
+        top:157px;
+        left:37px;
+    /*	opacity:0.7;*/
+        overflow-x:auto;
+        overflow-y:hidden !important;
+        z-index:99;
+    }
+    
+    .add_details{
+        position:absolute;
+        width:768px;
+        height:1024px;
+        top:0px;
+        left:0px;
+        display:none;	
+        z-index:99999;
+    }
+    
+    .food_timings2{
+        float:left;
+        position:absolute;
+        width:678px;
+        height:65px;
+        left:43px;
+        top:322px;
+    }
+    .food_timings2 img{
+        padding-left:12px;
+    }
+    
+    .inp{
+        position:absolute;
+        width:320px;
+        top:420px;
+        left:235px;
+        z-index:999;
+    }
+    
+    #food{
+        position:absolute;
+        top:0px;
+        left:-1px;
+        width:310px;
+        height:40px;
+        border:none;
+        font-size:25px;
+        text-align:center;
+        background:none;
+        opacity:0.5;
+    
+    }
+    #quantity{
+        position:absolute;
+        top:54px;
+        left:-1px;
+        width:310px;
+        height:40px;
+        border:none;
+        font-size:25px;
+        text-align:center;
+        background:none;
+        opacity:0.5;
+    
+    }
+    
+    #timing{
+        position:absolute;
+        top:109px;
+        left:-1px;
+        width:310px;
+        height:40px;
+        border:none;
+        font-size:25px;
+        text-align:center;
+        background:none;
+        opacity:0.5;
+    
+    }
+    
+    textarea{
+        position:absolute;
+        height: 174px;
+        width: 313px;
+        font-size:20px;
+        top:162px;
+        left:0px;
+        border:none;
+        opacity:0.5;
+        background:none;
+    }
+    
+    input, textarea {
+        font-family:'Conv_Corbert-Regular',Sans-Serif;
+        /*color:#6d6e72;*/
+        
+    }
+    
+    .clear_create{
+        position:absolute;
+        width:340px;
+        height:62px;
+        bottom:195px;
+        left:226px;
+    }
+    
+    .clear_create img{
+        padding:6px;
+    }
+    
+    .start_tim{
+        position:absolute;
+        top:285px;
+        left:30px;
+        display:none;
+        z-index:9999;
+    }
+    
+    .hr{
+        position:absolute;
+        left:200px;
+        top:248px;
+        width:90px;
+        height:75px;
+        border:none;
+        color:#FFFFFF;
+        text-align:center;
+        background:none !important;
+        font-size:50px;
+        overflow-x:hidden;
+        overflow-y:auto;
+        display:none;
+        
+    }
+    
+    #inp_time1{
+        position:absolute;
+        left:170px;
+        top:230px;
+        width:100px;
+        height:75px;
+        border:none;
+        color:#FFFFFF;
+        text-align:center;
+        font-size:50px;
+        background:#31d979;
+        background:none !important;
+        
+    }
+    #inp_time2{
+        position:absolute;
+        left:275px;
+        top:230px;
+        width:100px;
+        height:75px;
+        border:none;
+        color:#FFFFFF;
+        text-align:center;
+        font-size:50px;
+        background:#31d979;
+        background:none !important;
+        
+    }
+        
+    #hur a{
+        float:left;
+        width:100px;
+    }
+    
+    .min{
+        position:absolute;
+        left:300px;
+        top:248px;
+        width:100px;
+        height:75px;
+        border:none;
+        background:none !important;
+        text-align:center;
+        color:#FFFFFF;
+        font-size:50px;
+        overflow-x:hidden;
+        overflow-y:auto;
+        display:none;
+        
+    }
+    
+    #inp_time3{
+        position:absolute;
+        left:385px;
+        top:230px;
+        width:100px;
+        height:75px;
+        border:none;
+        color:#FFFFFF;
+        text-align:center;
+        font-size:50px;
+        background:none !important;
+        
+    }
+    .am_pm{
+        position:absolute;
+        left:410px;
+        top:248px;
+        width:100px;
+        height:75px;
+        border:none;
+        background:none !important;
+        text-align:center;
+        color:#FFFFFF;
+        font-size:50px;
+        overflow-x:hidden;
+        overflow-y:auto;
+        display:none;
+        
+    }
+    
+    .cancel{
+        position:absolute;
+        left:265px;
+        top:375px;
+        width:100px;
+        height:50px;
+        /*border:#EA1115 solid;
+        background-color:#CD0609;*/
+    }
+    
+    .ok{
+        position:absolute;
+        left:385px;
+        top:375px;
+        width:50px;
+        height:50px;
+        /*border:#EA1115 solid;
+        background-color:#CD0609;*/
+    }
+        
+    .slid_show{
+        position:absolute;
+        width:708px;
+        height:698px;
+        left:30px;
+        top:285px;
+        /*display:none;*/
+        z-index:999999;
+        /*opacity:0.7;*/
+    }
+    .list_carousel {
+        position: absolute;
+        left: 0px;
+        top: 12px;
+        margin: 0px;
+        padding: 0px;
+        width: 708px;
+        height:698px;
+        z-index: 99999;
+    }
+    .list_carousel ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        /*display: block;*/
+    }
+    .list_carousel li {
+        float:left;
+        width: 708px;
+        height:698px;
+        padding: 0px;
+        margin: 0px;
+        /*display: block;*/
+    }
+    .clearfix {
+        float: none;
+        clear: both;
+    }
+    .prev {
+        position: absolute;
+        top: 225px;
+        left: 90px;
+        width: 83px;
+        height: 132px;
+        margin: 0px;
+        z-index: 99999;
+        /*display:none;*/
+    }
+    .next {
+        position: absolute;
+        top: 225px;
+        right: 95px;
+        width: 83px;
+        height: 132px;
+        margin: 0px;
+        z-index: 99999;
+    }
+    
+    .circle{
+        position:absolute;
+        top:71px;
+        left:0px;
+        z-index:99999;
+    }
+    
+    .im_carving{
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:99;
+       /* display:none;*/
+    }
+    
+    </style>
+    <script>
+        $(document).ready(function(e) {
+            var i = j = k = l = m = n = 0;
+            $("#break").on("click", function(){
+                (i++ % 2) ? $(this).attr("src", "diet_img/add_meal_details/Breakfast_02.png")  : $(this).attr("src", "diet_img/add_meal_details/Breakfast_01.png");
+                
+                if(((i % 2) && (j % 2))||((i % 2) && (k % 2))) { 
+                    $("#lunch").attr("src","diet_img/add_meal_details/Lunch_02.png") ;
+                    $("#dinner").attr("src","diet_img/add_meal_details/Dinner_02.png") ;
+                     $(this).attr("src","diet_img/add_meal_details/Breakfast_01.png");
+                     
+                     console.log("i is : "+i+" j is : "+j+" k is : "+k);
+                     ((i % 2) && (j % 2)) ? j++ : j;
+                     ((i % 2) && (k % 2)) ? k++ : k;
+                }
+                
+                console.log("i : "+i+" j : "+j+" k  : "+k);
+                return false;
+                });
+            $("#lunch").on("click", function(){
+                    (j++ % 2) ? $(this).attr("src", "diet_img/add_meal_details/Lunch_02.png") : $(this).attr("src", "diet_img/add_meal_details/Lunch_01.png");
+                    
+                    if(((i % 2) && (j % 2))||((j % 2) && (k % 2))) { 
+                    $("#break").attr("src","diet_img/add_meal_details/Breakfast_02.png") ;
+                    $("#dinner").attr("src","diet_img/add_meal_details/Dinner_02.png") ;
+                     $(this).attr("src","diet_img/add_meal_details/Lunch_01.png");
+                      console.log("i is : "+i+" j is : "+j+" k is : "+k);
+                     ((i % 2) && (j % 2)) ? i++ : i;
+                     ((j % 2) && (k % 2)) ? k++ : k;
+                }
+                    console.log("i : "+i+" j : "+j+" k  : "+k);
+                    return false;
+                    
+                });
+            $("#dinner").on("click", function(){
+                    (k++ % 2) ? $(this).attr("src", "diet_img/add_meal_details/Dinner_02.png") : $(this).attr("src", "diet_img/add_meal_details/Dinner_01.png");
+                
+                    if(((i % 2) && (k % 2))||((j % 2) && (k % 2))) { 
+                    $("#break").attr("src","diet_img/add_meal_details/Breakfast_02.png") ;
+                    $("#lunch").attr("src","diet_img/add_meal_details/Lunch_02.png") ;
+                     $(this).attr("src","diet_img/add_meal_details/Dinner_01.png");
+                      console.log("i is : "+i+" j is : "+j+" k is : "+k);
+                     ((i % 2) && (k % 2)) ? i++ : i;
+                     ((j % 2) && (k % 2)) ? j++ : j;
+                }
+                    console.log("i : "+i+" j : "+j+" k  : "+k);
+                    return false;
+                    
+                });
+                
+                $(".meal").on("click", function(){
+                        $(".items").toggle();
+                        return false;
+                    });
+                $(".pop1").on("click", function(){
+                        $("#popup").toggle();
+                        return false;
+                    });
+                $(".pop2").on("click", function(){
+						 $(".diet_plan").show();
+               			 $(".food_timings").show();
+                        $(".items").hide();
+                        $(".add_details").hide();
+                        return false;
+                    });
+                $(".add_meal").on("click", function(){
+                        $(".add_details").toggle();
+                        return false;
+                    });
+                    
+                $(".break").on("click", function(){
+                (l++ % 2) ? $(this).attr("src", "diet_img/add_meal_details/Breakfast_02.png")  : $(this).attr("src", "diet_img/add_meal_details/Breakfast_01.png");
+                
+                if(((l % 2) && (m % 2))||((l % 2) && (n % 2))) { 
+                    $(".lunch").attr("src","diet_img/add_meal_details/Lunch_02.png") ;
+                    $(".dinner").attr("src","diet_img/add_meal_details/Dinner_02.png") ;
+                     $(this).attr("src","diet_img/add_meal_details/Breakfast_01.png");
+                     
+                     console.log("l is : "+l+" m is : "+m+" n is : "+n);
+                     ((l % 2) && (m % 2)) ? m++ : m;
+                     ((l % 2) && (n % 2)) ? n++ : n;
+                }
+                
+                console.log("l : "+l+" m : "+m+" n  : "+n);
+                return false;
+                });
+                
+                $(".lunch").on("click", function(){
+                    (m++ % 2) ? $(this).attr("src", "diet_img/add_meal_details/Lunch_02.png") : $(this).attr("src", "diet_img/add_meal_details/Lunch_01.png");
+                    
+                    if(((l % 2) && (m % 2))||((m % 2) && (n % 2))) { 
+                    $(".break").attr("src","diet_img/add_meal_details/Breakfast_02.png") ;
+                    $(".dinner").attr("src","diet_img/add_meal_details/Dinner_02.png") ;
+                     $(this).attr("src","diet_img/add_meal_details/Lunch_01.png");
+                      console.log("l ls : "+l+" m is : "+m+" n is : "+n);
+                     ((l % 2) && (m % 2)) ? l++ : l;
+                     ((m % 2) && (n % 2)) ? n++ : n;
+                }
+                    console.log("l : "+l+" m : "+m+" n  : "+n);
+                    return false;
+                });
+            $(".dinner").on("click", function(){
+                    (n++ % 2) ? $(this).attr("src", "diet_img/add_meal_details/Dinner_02.png") : $(this).attr("src", "diet_img/add_meal_details/Dinner_01.png");
+                
+                    if(((l % 2) && (n % 2))||((m % 2) && (n % 2))) { 
+                    $(".break").attr("src","diet_img/add_meal_details/Breakfast_02.png") ;
+                    $(".lunch").attr("src","diet_img/add_meal_details/Lunch_02.png") ;
+                     $(this).attr("src","diet_img/add_meal_details/Dinner_01.png");
+                      console.log("l is : "+l+" m is : "+m+" n is : "+n);
+                     ((l % 2) && (n % 2)) ? l++ : l;
+                     ((m % 2) && (n % 2)) ? m++ : m;
+                }
+                    console.log("l : "+l+" m : "+m+" k  : "+k);
+                    return false;
+                });
+                
+                
+                $(".but").on("click", function(){
+                    $("#food").val(" ");
+                    $("#quantity").val(" ");
+                    $("#information").val(" ");
+                    $("#timing").val("00 : 00 AM");
+                    return false;
+                });
+                
+                $("#timing").on("click", function(){
+                    $(".start_tim").toggle();
+                });
+                
+                $("#inp_time1").on("click", function(){
+            
+                $("#inp_time1").attr("value"," ");
+                $(".hr").toggle();
+                return false;
+            });
+            
+            $(".hr a").on("click", function(){
+                console.log("Hai	");
+                var m = $(this).data("id");
+                console.log(m);
+                $("#inp_time1").attr("value",m);
+                $(".hr").toggle();
+                return false;
+            });
+            
+            $("#inp_time2").on("click", function(){
+                
+                $("#inp_time2").attr("value"," ");
+                $(".min").toggle();
+                return false;
+            });
+            
+            $(".min a").on("click", function(){
+                console.log("Hai	");
+                var m = $(this).data("id");
+                console.log(m);
+                $("#inp_time2").attr("value",m);
+                $(".min").toggle();
+                return false;
+            });
+                
+            $("#inp_time3").on("click", function(){
+                
+                $("#inp_time3").attr("value"," ");
+                $(".am_pm").toggle();
+                return false;
+            });
+            
+            $(".am_pm a").on("click", function(){
+                console.log("Hai	");
+                var m = $(this).data("id");
+                console.log(m);
+                $("#inp_time3").attr("value",m);
+                $(".am_pm").toggle();
+                return false;
+            });
+            
+            $(".ok").on("click", function(){
+                var m=document.getElementById("inp_time1").value;
+                var n=document.getElementById("inp_time2").value;
+                var o=document.getElementById("inp_time3").value;
+				if(m == " ") m = "01";
+				if(n == " ") n = "00";
+				if(o == " ") o = "AM";
+                var p = m +" : " +n+" "+ o;
+                console.log(p);
+                //document.getElementById("inp_time").innerHTML = p;
+               //$("#inp_time").attr("value",p);
+			   $("#timing").val(p);
+                $(".start_tim").toggle();
+                    return false;
+            });
+            $(".cancel").on("click", function(){
+                $(".start_tim").toggle();
+                return false;
+            });
+            $(".carving").on("click", function(){
+                $(".diet_plan").toggle();
+                $(".food_timings").toggle();
+                return false;
+            });
+            // carouFredSel function for slideshow
+            $(function() {
+                //	Scrolled by user interaction
+                $('#foo2').carouFredSel({
+                    auto: false,
+                    prev: '#prev2',
+                    next: '#next2',
+                    pagination: "#pager2",
+                    mousewheel: true,
+                    /*swipe: {
+                        onMouse: true,
+                        onTouch: true
+                    }*/
+                    
+                });
+                
+            });
+        });
+        
+    </script>
+    </head>
+    
+    <body>
+    <div class="wrapper">
+      <img src="diet_img/bg.png" width="768" height="1024" usemap="#Map4" >
+        <map name="Map4">
+         <area shape="rect" coords="32,34,739,169" href="popup://5/close">
+          <area shape="rect" coords="522,198,679,261" href="#" class="carving">
+          <area shape="rect" coords="61,199,230,263" href="#" class="pop2">
+        </map>
+        <div class="diet_plan">
+            <img src="diet_img/Diet Plan_with_calorie.png" width="709" height="710" usemap="#Map2">
+            <map name="Map2">
+             <area shape="rect" coords="20,591,343,691" href="#" class="add_meal">
+             <area shape="rect" coords="365,592,693,691" href="#" class="meal">
+            </map>
+        </div>
+        <div class="food_timings">
+            <img src="diet_img/add_meal_details/Breakfast_02.png" width="210" height="55" id="break" class = "meal">
+            <img src="diet_img/add_meal_details/Lunch_02.png" width="210" height="55" id="lunch" class = "meal">
+            <img src="diet_img/add_meal_details/Dinner_02.png" width="210" height="55" id="dinner" class = "meal">
+        </div>
+      <div class="items">
+            <img src="diet_img/View Recommended Meal/View Recommended Meal.jpg" width="708" height="801" usemap="#Map">
+            <map name="Map">
+              <area shape="rect" coords="23,18,219,93" href="#" class="pop2">
+            </map>
+            <div class="pano">
+                    <img src="diet_img/View Recommended Meal/pano.png" width="1156" height="594" usemap="#panoMap" id="pano">
+                    <map name="panoMap">
+                      <area shape="rect" coords="-3,211,162,284" href="#" class="pop1">
+                    </map>
+           
+           </div>
+        </div>
+      <img src="diet_img/View Recommended Meal/popup.jpg" width="768" height="1024" usemap="#popupMap" id="popup">
+         <map name="popupMap">
+           <area shape="rect" coords="307,878,454,933" href="#" class="pop1">
+         </map>
+       <div class="add_details">
+            <img src="diet_img/add_meal_details/Add Meal Details.jpg" width="768" height="1024" usemap="#Map3">
+            <map name="Map3">
+              <area shape="rect" coords="52,200,241,264" href="#" class="pop2">
+            </map>
+            <div class="food_timings2">
+                <img src="diet_img/add_meal_details/Breakfast_02.png" width="210" height="55" class="break">
+                <img src="diet_img/add_meal_details/Lunch_02.png" width="210" height="55" class="lunch">
+                <img src="diet_img/add_meal_details/Dinner_02.png" width="210" height="55" class="dinner">
+            </div>
+            <div class="inp">
+                <input type="text" value="" id="food" />
+                <input type="text" value="" id="quantity" />
+                <input type="text" value="00 : 00 AM" id="timing" readonly/>
+    ​			<textarea rows="6" cols="25" id="information"></textarea>
+           </div>
+           <div class="clear_create">
+                <img class="but" src="diet_img/add_meal_details/clear.png" width="152" height="52"/>
+                <img class ="meal" src="diet_img/add_meal_details/create.png" width="152" height="52"/>
+         </div>
+           <div class="start_tim"><img src="diet_img/start_time.png" width="708" height="551">
+                    <input type="text" value="01" id="inp_time1" readonly>
+                    <div class="hr">
+                        <a data-id="01" >01</a>
+                        <a data-id="02" >02</a>
+                        <a data-id="03" >03</a>
+                        <a data-id="04" >04</a>
+                        <a data-id="05" >05</a>
+                        <a data-id="06" >06</a>
+                        <a data-id="07" >07</a>
+                        <a data-id="08" >08</a>
+                        <a data-id="09" >09</a>
+                        <a data-id="10" >10</a>
+                        <a data-id="11" >11</a>
+                        <a data-id="12" >12</a>
+                    </div>
+                   
+                    <input type="text" value="00" id="inp_time2" readonly>
+                    <div class="min">
+                        <a data-id="00" >00</a>
+                        <a data-id="05" >05</a>
+                        <a data-id="10" >10</a>
+                        <a data-id="15" >15</a>
+                        <a data-id="20" >20</a>
+                        <a data-id="25" >25</a>
+                        <a data-id="30" >30</a>
+                        <a data-id="35" >35</a>
+                        <a data-id="40" >40</a>
+                        <a data-id="45" >45</a>
+                        <a data-id="50" >50</a>
+                        <a data-id="55" >55</a>
+                    </div>
+                    
+                    <input type="text" value="AM" id="inp_time3" readonly>
+                    <div class="am_pm">
+                        <a data-id="AM" >AM</a>
+                        <a data-id="PM" >PM</a>                                    
+                    </div>
+                   
+                    <div class = "cancel"></div>
+                    <div class = "ok"></div>
+         </div>
+      </div>
+      <div class="im_carving">
+            <!--<img src="diet_img/I’m Craving.jpg" width="768" height="1024"> -->
+           <div class="slid_show">
+                <div class="list_carousel">
+                    <ul id="foo2">
+                        <li><img src="diet_img/slide_01.png" width="708" height="698" alt=""/></li>
+                        <li><img src="diet_img/slide_01.png" width="708" height="698" alt=""/></li>
+                        <li><img src="diet_img/slide_01.png" width="708" height="698" alt=""/></li>
+                        <li><img src="diet_img/slide_01.png" width="708" height="698" alt=""/></li>
+            
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <img src="diet_img/02.png" width="708" height="441" class="circle"/>
+                <a id="next2" class="prev" href="#"><img src="diet_img/left.png" width="83" height="132" alt=""/></a>
+                <a id="prev2" class="next" href="#"><img src="diet_img/right.png" width="83" height="132" alt=""/></a>
+            </div>
+            
+        </div>
+         
+    </div>
+    </body>
+    </html>

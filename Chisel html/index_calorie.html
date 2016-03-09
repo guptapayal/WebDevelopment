@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Highlight dropzones with interajct.js</title>
+    <script src="js/interact.js"></script>
+    <script src="js/dropzones.js"></script>
+    <script src="js/jquery-1.10.2.js" ></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/dropzones.css">
+    <link href="css/style_calorie.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="fonts.css" type="text/css" charset="utf-8" />
+</head>
+
+<body>
+<div class="wrapper" >
+	<div class="bg">
+    <div id="main-container">
+        <div id="container" >
+        <div class="home_page"></div>
+        <div id="cont" class="sugg" ></div>
+        <div id="drag1" class="draggable js-drag" ><img src="calorie_img/egg_small.png" width="91" height="69" style="opacity:0.7"></div>
+        <div id="drag2" class="draggable js-drag"><img src="calorie_img/cheese_small.png" width="115" height="104"></div>
+        <div id="drag3" class="draggable js-drag"><img src="calorie_img/milk_small.png" width="109" height="97"></div>
+        <div id="drag4" class="draggable js-drag"><img src="calorie_img/Chicken_small.png" width="126" height="84"></div>
+      
+       
+        <div class="dropzone-wrapper">
+            <div id="drop1" class="dropzone js-drop">
+                <img src="calorie_img/plate.png" width="513" height="502" >
+                
+                <div id="dragged1" class="dragged">
+                <span id="sp1">0</span> 
+                   <img src="calorie_img/egg.png" width="197" height="155">
+               </div>
+               <div id="dragged2" class="dragged">
+                <span id="sp2">0</span> 
+                   <img src="calorie_img/cheese.png" width="165" height="147">
+               </div>
+               <div id="dragged3" class="dragged">
+                <span id="sp3">0</span> 
+                   <img src="calorie_img/milk.png" width="187" height="167">
+               </div>
+               <div id="dragged4" class="dragged">
+                <span id="sp4">0</span> 
+                   <img src="calorie_img/chicken.png" width="213" height="141">
+               </div>
+          </div>
+           
+        </div>
+        <input id="calories" class="calculations" type="number" value="00" readonly/>
+       <img src="calorie_img/warning.png" width="31" height="31" class="warrning" id="cal_war">
+        <input id="carbs" class="calculations" type="number" value="00" readonly/>
+    <img src="calorie_img/warning.png" width="31" height="31" class="warrning" id="carb_war">
+        <input id="fat" class="calculations" type="number" value="00" readonly/>
+       <img src="calorie_img/warning.png" width="31" height="31" class="warrning" id="fat_war">
+        <input id="protien" class="calculations" type="number" value="00" readonly/>
+      <img src="calorie_img/warning.png" width="31" height="31" class="warrning" id="prot_war">
+</div> <!--Conatiner-->
+    </div> <!--Main Conatiner-->
+
+	<div id="egg" class="popup">
+        <img src="calorie_img/egg_bg.png" width="768" height="1024" usemap="#Map" />
+            <map name="Map">
+                      <area shape="rect" coords="315,879,456,937" href="#" class="ok">
+      </map>
+    </div>
+    <div id="cheese" class="popup">
+    	<img src="calorie_img/cheese_bg.png" width="768" height="1024" usemap="#Map1" />
+            <map name="Map1">
+                      <area shape="rect" coords="315,879,456,937" href="#" class="ok">
+            </map>
+    </div>
+    <div id="milk" class="popup">
+    	<img src="calorie_img/milk_bg.png" width="768" height="1024" usemap="#Map2" />
+            <map name="Map2">
+                      <area shape="rect" coords="315,879,456,937" href="#" class="ok">
+            </map>
+    </div>
+    <div id="chicken" class="popup">
+    	<img src="calorie_img/chicken_bg.png" width="768" height="1024" usemap="#Map3" />
+            <map name="Map3">
+                      <area shape="rect" coords="315,879,456,937" href="#" class="ok">
+            </map>
+    </div>
+    <div class="suggest" >
+    	<img src="calorie_img/suggest_menu.png" width="708" height="822" usemap="#Map4">
+        <map name="Map4">
+          <area shape="rect" coords="489,33,648,89" href="#" id="sugg">
+          <area shape="rect" coords="647,141,694,194" href="#" id="egg1">
+          <area shape="rect" coords="646,313,690,362" href="#" id="chicken1">
+          <area shape="rect" coords="648,481,693,539" href="#" id="milk1">
+          <area shape="rect" coords="35,29,267,91" href="#" class="calorie">
+        </map>
+         <input id="calories1" class="calculations1" type="number" value="00" readonly/>
+         <input id="carbs1" class="calculations1" type="number" value="00" readonly/>
+         <input id="fat1" class="calculations1" type="number" value="00" readonly/>
+         <input id="protien1" class="calculations1" type="number" value="00" readonly/>
+      
+</div>
+</div>
+</div>
+
+<div class="videos" >
+    <video id="vid" width="708" height="821">
+    	<source src="video/suggest_menu.mp4" type="video/mp4">
+    </video>
+    
+</div>
+
+<script type="text/javascript">
+	var count=1;
+	
+	$(document).ready(function(e) {
+		$(".home_page").on("click", function(){
+			location.href = "popup://6/close";
+		});
+        $(".ok").on("click", function(){
+			$(".popup").hide();
+		});
+		 $("#sugg").on("click", function(){
+		 	$(".suggest").toggle();
+		 });
+		 
+		$(".calorie").on("click", function(){
+			$(".suggest").hide();	
+			$(".bg").show();
+		});
+     $(".sugg").on("click", function(){
+		
+		 	$(".suggest").toggle();
+			//$(".wrapper").css("opacity", 0.7);
+			if(count++ == 1){
+				$(".bg").toggle();
+				$(".videos").toggle();
+				var myvideo = document.getElementsByTagName('video')[0];
+				myvideo.load();
+				myvideo.play();
+				//$("#vid").get(0).play();
+				setTimeout(function() {
+							$(".bg").toggle();
+							//$("video").css("opacity", 0.5);
+							$(".videos").toggle();
+							//$("video").trigger("pause");
+					},5000);
+			}
+		});
+	
+	$("#dragged1 img").on("click", function(){
+			$("#egg").toggle();
+		});
+	$("#dragged2 img").on("click", function(){
+			$("#cheese").toggle();
+		});
+	$("#dragged3 img").on("click", function(){
+			$("#milk").toggle();
+		});
+	$("#dragged4 img").on("click", function(){
+			$("#chicken").toggle();
+		});
+	var addition;
+	$("#dragged1 span").on("click", function(){
+			var fitnessCal = {
+				  cal: 52,
+				  fat:0.2,
+				  carb:0.7,
+				  prot: 11
+			 };
+			did=document.getElementById('dragged1');
+			d1 = did.children[0].innerHTML;
+			did.className='dragged displayblock';
+			if(did.children[0].innerHTML<=1)
+			{
+				d1=1
+				did.className='dragged displaynone';
+			}
+			addition = 0;
+			d1--;
+			did.children[0].innerHTML=d1;
+			deduction(fitnessCal,addition);
+			
+	});
+	$("#dragged2 span").on("click", function(){
+			var fitnessCal = {
+				  cal: 98,
+				  fat:4.3,
+				  carb:3.4,
+				  prot: 11
+			 };
+			 addition = 0;
+			 did=document.getElementById('dragged2');
+			did.className='dragged displayblock';
+			d1 = did.children[0].innerHTML;
+			if(did.children[0].innerHTML<=1)
+			{
+				d1=1
+				did.className='dragged displaynone';
+			}
+			//console.log(did.children[0].innerHTML);
+			d1--;
+			console.log(d1);
+			did.children[0].innerHTML=d1;
+			deduction(fitnessCal,addition);
+			
+	});
+	$("#dragged3 span").on("click", function(){
+			var fitnessCal = {
+				  cal: 34,
+				  fat:0.1,
+				  carb:5,
+				  prot: 3.4
+			 };
+			 addition = 0;
+			 did=document.getElementById('dragged3');
+			 d1 = did.children[0].innerHTML;
+			did.className='dragged displayblock';
+			if(did.children[0].innerHTML<=1)
+			{
+				d1=1
+				did.className='dragged displaynone';
+			}
+			d1--;
+			did.children[0].innerHTML=d1;
+			deduction(fitnessCal,addition);
+			
+	});
+	$("#dragged4 span").on("click", function(){
+			var fitnessCal = {
+				  cal: 165,
+				  fat:3.6,
+				  carb:0,
+				  prot: 31
+			 };
+			 did=document.getElementById('dragged4');
+			 d1 = did.children[0].innerHTML;
+			did.className='dragged displayblock';
+			if(did.children[0].innerHTML<=1)
+			{
+				d1=1
+				did.className='dragged displaynone';
+			}
+			d1--;
+			did.children[0].innerHTML=d1;
+			deduction(fitnessCal);
+			
+	});
+		
+		function deduction(fitnessCal, addition){
+			var calories = document.getElementById('calories').value;
+			console.log(calories);
+			var protein = document.getElementById('protien').value;
+			var carbs = document.getElementById('carbs').value;
+			var fat = document.getElementById('fat').value;
+			console.log("prev "+calories+"  cal   "+fitnessCal.cal);
+			console.log("prev "+carbs+"  carb   "+fitnessCal.carb);
+			console.log("prev "+fat+"  fat   "+fitnessCal.fat);
+			console.log("prev "+protein+"  prot   "+fitnessCal.prot);
+			
+			if(addition == 1){
+				calories = parseFloat(calories) + fitnessCal.cal;
+				carbs = parseFloat(carbs) + fitnessCal.carb;
+				fat = parseFloat(fat) + fitnessCal.fat;
+				protein = parseFloat(protein) + fitnessCal.prot;
+				}
+			else{
+				calories = parseFloat(calories) - fitnessCal.cal;
+				carbs = parseFloat(carbs) -  fitnessCal.carb;
+				fat = parseFloat(fat) - fitnessCal.fat;
+				protein = parseFloat(protein) - fitnessCal.prot;
+			}
+			var protein1 =  parseFloat(protein).toFixed(1);
+			var carbs1 =parseFloat(carbs).toFixed(1);
+			var fat1 = parseFloat(fat).toFixed(1);
+			console.log(calories);
+			console.log(carbs1);
+			console.log(fat1);
+			console.log(protein1);
+			document.getElementById('calories').value=calories;
+			document.getElementById('carbs').value=carbs1;
+			document.getElementById('fat').value=fat1;
+			document.getElementById('protien').value=protein1;
+			document.getElementById('calories1').value=calories;
+			document.getElementById('carbs1').value=carbs1;
+			document.getElementById('fat1').value=fat1;
+			document.getElementById('protien1').value=protein1;
+			 warrning_fun();
+			
+		}
+		$(".suggest #egg1").on("click", function(){
+			var fitnessCal = {
+				  cal: 52,
+				  fat:0.2,
+				  carb:0.7,
+				  prot: 11
+			 };
+			 did=document.getElementById('dragged1');
+			 d1 = did.children[0].innerHTML;
+			 did.children[0].innerHTML=++d1;
+			 did.className='dragged displayblock';
+			 addition=1;
+			 deduction(fitnessCal, addition)
+			//add(fitnessCal);
+		});
+		$(".suggest #milk1").on("click", function(){
+			var fitnessCal = {
+				  cal: 34,
+				  fat:0.1,
+				  carb:5,
+				  prot: 3.4
+			 };
+			 did=document.getElementById('dragged3');
+			 d1 = did.children[0].innerHTML;
+			 did.children[0].innerHTML=++d1;
+			 did.className='dragged displayblock';
+			 addition=1;
+			  deduction(fitnessCal,addition);
+		});
+		$(".suggest #chicken1").on("click", function(){
+			var fitnessCal = {
+				  cal: 165,
+				  fat:3.6,
+				  carb:0,
+				  prot: 31
+			 };
+			 did=document.getElementById('dragged4');
+			 d1 = did.children[0].innerHTML;
+			 did.children[0].innerHTML=++d1;
+			 did.className='dragged displayblock';
+			 addition=1;
+			 deduction(fitnessCal,addition);
+		});
+		function warrning_fun(){
+				var calories = document.getElementById('calories').value;
+				var protein = document.getElementById('protien').value;
+				var carbs = document.getElementById('carbs').value;
+				var fat = document.getElementById('fat').value;
+				
+				( calories > 500) ? $("#cal_war").show() : $("#cal_war").hide();
+				( carbs > 20) ? $("#carb_war").show() : $("#carb_war").hide();	
+				( fat > 20) ? $("#fat_war").show() : $("#fat_war").hide();
+				( protein > 60) ? $("#prot_war").show() : $("#prot_war").hide();	
+			}
+		
+	
+		
+		
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trigger</title>
+<link rel="stylesheet" href="fonts.css" type="text/css" charset="utf-8" />
+<script src="jquery-1.9.1.js"></script>
+<script>
+$(document).ready(function() {
+	//location.href = "media://m444/play"
+	
+	$(".submit").click(function() {
+		
+		//$(".myform").submit();
+		//alert("wrong");
+		//var valu = $(".enter").val();
+		//alert (valu);
+		//$(".b").delay(5000).trigger("click");
+		/*setTimeout(function() {
+			//$(".b").trigger("click");
+			alert("triggered");
+		},2000);*/
+		
+		
+		var valu = $(".enter").val();
+		
+		
+		if ((valu == "virat") || (valu == "Virat") || (valu == "VIRAT") ||(valu == "kohli") || (valu == "Kohli") ||(valu == "KOHLI") || (valu == "virat kohli") || (valu == "Virat kohli") || (valu == "Virat Kohli") ||  (valu == "virat Kohli") || (valu == "VIRAT KOHLI")) {
+			
+			$(".a").trigger("click");
+			$("#field").val("");
+			
+			setTimeout(function() {
+			$(".b").trigger("click");
+			//alert("triggered");
+			},40510);
+		}
+		else {
+			$("#field").val("");
+			 $("#img").show();
+    return false;
+		}
+		//alert(valu);
+		return false;
+		
+		
+	});
+	
+	
+	
+	
+});
+</script>
+<style>
+body {
+	margin:0px;
+	padding:0px;
+	font-family:'Conv_Corbert-Regular',Sans-Serif !important;
+	
+}
+#wrapper {
+	position:relative;
+	width:768px;
+	height:1024px;
+	margin:0px auto;
+	padding:0px;
+	overflow:hidden !important;
+}
+.bg {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:768px;
+	height:1024px;
+	margin:0px;
+	padding:0px;
+	z-index:8;
+}
+.content {
+	position: absolute;
+	top: 260px;
+	left: 248px;
+	width: 350px;
+	height: 100px;
+	margin: 0px;
+	padding: 0px;
+	z-index: 9;
+}
+#img{
+	display:none;
+	position: absolute;
+	top: 322px;
+	left: 311px;
+	width: 86px;
+	height: 18px;
+	margin: 0px;
+	z-index: 999;
+}
+input[type=text] {
+  background:none;
+  border:0px none;
+  width : 212px;
+  height:40px;
+  -webkit-appearance: none;
+  font-size:16pt;
+  color:#A7A9AB;
+  text-align:center;
+}
+
+
+
+input[type=submit] { 
+background:none;
+border:0px none;
+font-size:1px;
+width : 100px;
+height:50px;
+
+
+}
+*::selection 
+{
+	  
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="img"> <img src="try again.png" alt="" width="86" height="18" border="0"/></div>
+	<div class="bg"><img src="ref_01.jpg"  alt="" width="768" height="1024" usemap="#Map"/>
+      <map name="Map">
+        <area shape="rect" coords="678,22,687,25" href="media://m451/play" class="a">
+     
+        <area shape="rect" coords="600,9,608,14" href="jump://2"  class="b">
+      </map>
+	</div>
+  
+   	<div class="content">
+		<form name="myform" id="myform">
+			<input type="text" class="enter" value="" id="field" maxlength="11"/>
+			<input type="submit" class="submit">
+		</form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+body { font-family:'Conv_Corbert-Regular',Sans-Serif; }
+
+.dropzone-wrapper {
+    position: relative;
+	top: 74px;
+	left: 30px;
+	width: 490px;
+	height: 425px;
+}
+
+.dropzone {
+    overflow: hidden;
+   /* margin: .5em;
+    padding: 1em;*/
+    color: #666;
+	left: -30px;
+    text-align: center;
+  /*  background: #ccc;*/
+   /* line-height: 4em;*/
+	position:relative;
+    transition: background .15s linear, border-color .15s linear;
+}
+
+.dropzone.-drop-possible { border-color: #666; }
+
+.dropzone.-drop-over {
+   
+    color: #fff;
+}
+.-do-over {
+	transform: translate(0px, 0px) !important;
+	-webkit-transform: translate(0px, 0px) !important;
+}
+
+.draggable {
+    position: relative;
+    z-index: 10;
+    width: 120px;
+    margin: .25em;
+    color: #fff;
+    text-align: center;
+	display:inline-block
+}
+
+.draggable.-drop-possible { }

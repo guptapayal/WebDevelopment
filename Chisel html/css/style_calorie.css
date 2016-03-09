@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/* CSS Document */
+@font-face {
+	/*font-family: CaeciliaLTStd-Roman;
+	src:url(CaeciliaLTStd-Roman.ttf);*/
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, hgroup, menu, footer, header, nav, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; } article, aside, canvas, figure, figure img, figcaption, hgroup, footer, header, nav, section, audio, video { display: block; } a img {border: 0;} 
+
+body { 
+	margin:0;
+	padding:0;
+	font-family:CaeciliaLTStd-Roman;
+	/*font-size:14px;*/
+	color:#ffffff;
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+   -webkit-user-select: none;
+	
+	}
+.wrapper{
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	width:768px;
+	height:1024px;
+	overflow:hidden !important;
+	background:url(../calorie_img/bg.png);
+	background-size:768px, 1024px;
+
+}
+#main-container{
+	width:100%;
+	height:822px;
+	position:relative;
+	background:url(../calorie_img/Calorie%20Counter_01.png);
+	/*background:url(../img/Calorie%20Counter_ref01.jpg);*/
+	background-size:708px 822px;
+	background-position:top center;
+	background-repeat:no-repeat;
+	top:172px;
+	/*background-color:#F3E5E5;*/
+	/*display:none;*/
+	
+}
+#container{
+	width:708px;
+	height:822px;
+	margin:0 auto;
+	/*padding:70px 0px 0px;*/
+	position:relative;
+	/*background-color:#4D71B0;*/
+	
+}
+#cont{
+	position:relative;
+	width:140px;
+	height:100px;
+	left:500px;
+	top:10px;
+	/*background-color:#EF1216;*/
+}
+#food-container{
+	margin-top:280px
+}
+
+.home_page{
+	position:absolute;
+	left:0px;
+	top:-140px;
+	width:708px;
+	height:150px;
+	z-index:999999;
+}
+#drag1{
+	top: -3px;
+	left: 41px;
+}
+#drag2{
+	top: 13px;
+	left: 86px;
+	
+}
+#drag3{
+	top: 18px;
+	left: 119px;
+	
+}
+#drag4{
+	top: 4px;
+	left: 138px;
+}
+#drag5{
+	top: -1px;
+   left: -6px;
+}
+.dragged{
+	position: absolute;
+	top: 0px;
+	left:0px;
+	display:none
+}
+
+.dragged.displayblock{
+	display:block}
+
+.dragged span{
+	display:block;
+	background:#d91f5d;
+	width: 45px;
+	border-radius: 50%;
+	text-align:center;
+	font-size:14px;
+	color:#fff;
+	position:relative;
+   line-height:45px;	
+}
+
+#dragged1{
+	top: 60px;
+	left: 107px;
+}
+#sp1{
+	top:30px;
+	left:53px;
+}
+#sp2{
+	top:116px;
+	left:35px;
+}
+#sp3{
+	top:26px;
+	left:83px;
+}
+#sp4{
+	top:57px;
+	left:153px;
+}
+
+
+#dragged2{
+	top: 160px;
+   left: 110px;
+}
+
+#dragged3{
+	top: 107px;
+	left: 261px;
+}
+#dragged4{
+	top: 248px;
+   left: 190px;
+}
+#dragged5{
+	top: 150px;
+	left: 242px;
+}
+
+.warrning{
+	position:absolute;
+	width:31px;
+	height:31px;
+	right:175px;
+}
+#cal_war{
+	bottom:445px;
+	display:none;
+}
+#carb_war{
+	bottom:325px;
+	display:none;
+}
+#fat_war{
+	bottom:195px;
+	display:none;
+}
+#prot_war{
+	bottom:70px;
+	display:none;
+}
+.calculations{
+	position:absolute;
+	right:20px;
+	width:120px;
+	height:70px;
+	font-size: 30px;
+	font-weight:200;
+	background:none;
+	border:none;
+	letter-spacing: -2px;
+	color:#FFFFFF;
+	
+	
+}
+#calories{
+	
+	bottom:410px;
+}
+#carbs{
+	bottom:285px;
+}
+#fat{
+	bottom:160px;
+}
+#protien{
+	bottom:35px;
+}
+.calculations1{
+	position:absolute;
+	width:120px;
+	height:70px;
+	text-align:center;
+	font-size: 30px;
+	font-weight:600;
+	bottom: 25px;
+	background:none;
+	border:none;
+	letter-spacing: -2px;
+	color:#FFFFFF;
+}
+#calories1{
+	 left: 35px;
+}
+#carbs1{
+    left: 200px;
+}
+#fat1{
+    left: 360px;
+}
+#protien1{
+    left: 520px;
+}
+
+#egg, #cheese, #milk, #chicken{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:99;
+	display:none;
+}
+.suggest{
+	position:absolute;
+	width:708px;
+	height:823px;
+	top:172px;
+	left:30px;
+	display:none;
+	z-index:99;
+}
+.videos{
+	position:relative;
+	top:0px;
+	left:0px;
+	margin:0px;
+	padding:0px;
+	width:768px;
+	height:1024px;
+	z-index:9999;
+	display:none;
+	
+}
+#vid{
+	position:absolute;
+	top:161px;
+	left:30px;
+}
+
+input, div{
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+}
+
+
+/*Portrait Styles*/
+@media only screen and (min-width : 768px) 
+and (max-width : 1024px) 
+and (-webkit-min-device-pixel-ratio: 1) { 
+	
+	/*body{
+		
+	}
+	#drag2{
+	top: 7px;
+	left: 6px;
+	}
+	#drag3{
+		left:8px
+	}
+	#drag4{
+		top: 0px;
+	  left: 9px;
+	}
+	#drag5{
+		top: 0px;
+	  left: 0px;
+	}*/
+}
+
+/*Portrait Styles*/
+@media only screen and (min-device-width : 1152px) 
+and (max-device-width : 1536px) 
+and (orientation : portrait)
+and (-webkit-min-device-pixel-ratio: 2) { 
+
+}
+
+
+::selection { background: transparent; }
+
+* {
+-webkit-user-select: none;
+user-select: none;
+}

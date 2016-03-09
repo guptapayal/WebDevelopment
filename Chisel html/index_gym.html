@@ -1,0 +1,469 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gym buddy</title>
+<script src="js/jquery-1.10.2.js"></script>
+
+<style>
+body{
+	margin:0px;
+	padding:0px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+   -webkit-user-select: none;
+	/*background-color:#BD373A;*/
+}
+
+.wrapper{
+	margin:0px;
+	padding:0px;
+	left:0px;
+	top:0px;
+	width:768px;
+	height:1024px;
+	overflow:hidden !important;
+}
+.base{
+	position:absolute;
+	width:708px;
+	height:822px;
+	top:172px;
+	left:30px;
+	z-index:99
+}
+.select_buddy{
+	position:absolute;
+	width:768px;
+	height:1024px;
+	top:0px;
+	left:0px;
+	display:none;
+	z-index:9999;
+}
+
+.frnd_img{
+	position:absolute;
+	width:255px;
+	height:321px;
+	top:328px;
+	left:256px;
+	z-index:999;
+	display:none;
+}
+
+#bg_white{
+	position:absolute;
+	width:708px;
+	height:430px;
+	left:30px;
+	top:284px;
+	display:none;
+	z-index:999;
+}
+
+#send_button{
+	position:absolute;
+	top:650px;
+	left:272px;
+	z-index:999;
+	display:none;
+}
+
+.congrats{
+	position:absolute;
+	width:768px;
+	height:1024px;
+	left:0px;
+	top:0px;
+	z-index:9999;
+	display:none;
+	
+}
+
+.cong{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+
+.ok{
+	position:absolute;
+	width:130px;
+	height:45px;
+	bottom:90px;
+	left:320px;
+	z-index:99999;
+}
+
+.noti{
+	position:absolute;
+	top:172px;
+	left:469px;
+	z-index:999;
+	display:none;
+}
+
+#disable_nodi{
+	top:172px;
+	left:662px;
+}
+.scanning{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+	z-index:999;
+}
+#vid{
+	display:none;
+	z-index:9999;
+}
+.close_icon{
+	position:absolute;
+	width:100px;
+	height:80px;
+	top:30px;
+	left:650px;
+	display:none;
+	z-index:99999;
+}
+
+.chat{
+	position:absolute;
+	width:768px;
+	height:1024px;
+	top:0px;
+	left:0px;
+	display:none;
+	z-index:9999;
+}
+
+#fav_enable{
+	position:absolute;
+	top:372px;
+	right:92px;
+	display:none;
+	z-index:99999;
+}
+
+.grey_msg{
+	position:absolute;
+	bottom:150px;
+	right:92px;
+	z-index:99999;
+	display:none;
+}
+.res_msg{
+	position:absolute;
+	bottom:150px;
+	left:89px;
+	z-index:99999;
+	display:none;
+}
+
+#start_chat{
+	position:absolute;
+	top:650px;
+	left:252px;
+	z-index:999;
+	display:none;
+	
+}
+.chat_pic{
+	position:absolute;
+	top:303px;
+	left:51px;
+	z-index:999;
+	display:none;
+}
+
+	
+</style>
+<script>
+	$(document).ready(function(e) {
+		var pic;
+		var i = j = k = l = count = 0;
+		/*function click_off(){
+			$("#sn1").off("click");
+			$("#vi1").off("click");
+			$("#ri1").off("click");
+	
+		}*/
+        $(".find_buddy").on("click",function(){
+			$(".select_buddy").show();
+			$("#bg_white").show();
+			//click_off();
+		});
+		$(".sneha").on("click",function(){
+			$("#bg_white").show();
+			$(".select_buddy").hide();
+			$("#sneha").show();
+			$("#vikram").hide();
+			$("#richard").hide();
+			$("#rita").hide();
+			$("#send_button").hide();
+			$("#start_chat").show();
+			console.log("i "+i);
+			if(i == 0 ){
+				$("#send_button").show();
+				$("#start_chat").hide();
+			}
+			pic = 1;
+			//click_off();
+			
+		});
+		$(".vikram").on("click",function(){
+			$("#bg_white").show();
+			$(".select_buddy").hide();
+			$("#vikram").show();
+			$("#sneha").hide();
+			$("#richard").hide();
+			$("#rita").hide();
+			$("#send_button").hide();
+			$("#start_chat").show();
+			console.log("j "+j);
+			if(j == 0 ){
+				$("#send_button").show();
+				$("#start_chat").hide();
+			}
+			pic = 2;
+			//click_off()
+		});
+		$(".richard").on("click",function(){
+			$("#bg_white").show();
+			$(".select_buddy").hide();
+			$("#richard").show();
+			$("#vikram").hide();
+			$("#sneha").hide();
+			$("#rita").hide();
+			$("#send_button").hide();
+			$("#start_chat").show();
+			console.log("k "+k);
+			if(k == 0 ){
+				$("#send_button").show();
+				$("#start_chat").hide();
+			}
+			pic = 3;
+			//click_off()
+		});
+		$(".rita").on("click",function(){
+			$("#bg_white").show();
+			$(".select_buddy").hide();
+			$("#rita").show();
+			$("#vikram").hide();
+			$("#richard").hide();
+			$("#sneha").hide();
+			
+			
+			if(l++ ==0 )
+				$("#send_button").show();
+			pic = 4;
+		});
+		
+		$("#send_button").on("click", function(){
+			$("#send_button").hide();
+			$("#start_chat").show();
+			$(".congrats").show();
+			if(pic == 1){
+				i++;
+				$("#slide3").show();
+			}
+			else if(pic == 2){
+				$("#slide2").show();
+				j++;
+			}
+			else if(pic == 3){
+				$("#slide1").show();
+				k++;
+			}
+			else if(pic == 4)
+				$("#slide4").show();
+		});
+		$(".ok").on("click",function(){
+			$(".congrats").hide();
+			$(".cong").hide();
+		});
+		
+		$("#notification").on("click", function(){
+			$("#notific1").show();
+		});
+		$("#accept").on("click", function(){
+			$("#notific1").hide();
+			$("#notific2").show();
+		});
+		$("#reject").on("click", function(){
+			$("#notific1").hide();
+			$("#disable_nodi").show();
+		});
+		$("#notific2").on("click", function(){
+			$("#notific2").hide();
+			$("#disable_nodi").show();
+		});
+		$("#virtual_trainer").on("click", function(){
+			$(".scanning").show();
+		});
+		$("#start_scan").on("click", function(){
+			$(".scanning").hide();
+			$("#vid").show();
+			$(".bg").hide();
+			var myvideo = document.getElementsByTagName('video')[0];
+			myvideo.load();
+			myvideo.play();
+			$(".close_icon").show();
+			setTimeout(function(){
+				$(".close_icon").trigger("click");
+			},49300);
+			
+		});
+		$(".close_icon").on("click", function(){
+			$("video").trigger("pause");
+			$("#vid").hide();
+			$(".bg").show();
+			$(".close_icon").hide();
+		});
+		$(".fav").on("click",function(){
+			$("#fav_enable").toggle();		
+		});
+		$("#msg_send").on("click",function(){
+			if( count == 0 ){ 
+				console.log(count);
+				$("#grey_1").animate({bottom:'434px'}).show();
+				setTimeout(function(){
+					$("#red_1").animate({bottom:'369px'}).show();
+				},2000);
+				count++;
+			}
+			else if(count == 1){
+				console.log(count);
+				$("#grey_2").animate({bottom:'306px'}).show();
+				setTimeout(function(){
+					$("#red_2").animate({bottom:'241px'}).show();
+				},2000);
+				count++;
+			}
+			else{
+				$("#grey_3").animate({bottom:'178px'}).show();
+				
+			}
+		});
+		$("#start_chat").on("click", function(){
+			$(".chat").show();
+			if(pic == 1)
+				$("#sneha_chat").show();
+			else if(pic == 2)
+				$("#vikram_chat").show();
+			else if(pic == 3)
+				$("#richard_chat").show();
+			else if(pic == 4)
+				$("#rita_chat").show();
+			
+		});
+		$(".gym_buddy").on("click", function(){
+			
+			$("#grey_1").animate({bottom:'150px'}).hide();
+			$("#red_1").animate({bottom:'150px'}).hide();
+			$("#grey_2").animate({bottom:'150px'}).hide();
+			$("#red_2").animate({bottom:'150px'}).hide();
+			$("#grey_3").animate({bottom:'150px'}).hide();
+			$(".chat").hide();
+			$("#sneha_chat").hide();
+			$("#vikram_chat").hide();
+			$("#richard_chat").hide();
+			$("#rita_chat").hide();
+			count = 0;
+		});
+    });
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+<div class="bg">
+  <img src="gym_img/bg.png" width="768" height="1024" usemap="#Map5"/>
+  <map name="Map5">
+    <area shape="rect" coords="34,31,737,168" href="popup://4/close">
+  </map>
+    <div class="base">
+    	<img src="gym_img/base_02.png" width="708" height="822" usemap="#Map">
+        <map name="Map">
+          <area shape="rect" coords="31,23,234,90" href="#" id="gym_buddy">
+          <area shape="rect" coords="427,34,628,85" href="#" id="virtual_trainer">
+          <area shape="rect" coords="635,22,705,87" href="#" id="notification">
+          <area shape="rect" coords="187,135,532,505" href="#" class="find_buddy">
+          <area shape="rect" coords="473,598,630,789" href="#" class="sneha" id="sn1">
+          <area shape="rect" coords="262,600,442,791" href="#" class="vikram" id="vi1">
+          <area shape="rect" coords="67,599,230,779" href="#" class="richard" id="ri1">
+        </map>
+    </div>
+    <div class="select_buddy">
+    	<img src="gym_img/Slect_your_Gym_buddy.png" width="768" height="1024" usemap="#Map2">
+        <map name="Map2">
+          <area shape="rect" coords="136,409,349,650" href="#" class="richard">
+          <area shape="rect" coords="141,684,362,935" href="#" class="sneha">
+          <area shape="rect" coords="404,410,619,648" href="#" class="vikram">
+          <area shape="rect" coords="406,680,615,933" href="#" class="rita">
+        </map>
+    </div>
+    
+    <div>
+    	<img src="gym_img/bg_white.png" width="708" height="430" id="bg_white">
+    	<img src="gym_img/Rita.png" width="255" height="321" id="rita" class="frnd_img">
+        <img src="gym_img/Vikram.png" width="255" height="321" id="vikram" class="frnd_img">
+        <img src="gym_img/Richard.png" width="255" height="321" id="richard" class="frnd_img">
+        <img src="gym_img/Sneha.png" width="255" height="321" id="sneha" class="frnd_img">
+        <img src="gym_img/send request.png" width="223" height="34" id="send_button">
+      <img src="gym_img/Chat/start_a_conversation.png" width="263" height="34" id="start_chat">
+    </div>
+    <div class="congrats">
+    	<img src="gym_img/Congratulations_04.png" width="768" height="1024" id="slide1" class="cong">
+        <img src="gym_img/Congratulations_03.png" width="768" height="1024" id="slide2" class="cong">
+        <img src="gym_img/Congratulations_02.png" width="768" height="1024" id="slide3" class="cong">
+        <img src="gym_img/Congratulations.png" width="768" height="1024" id="slide4" class="cong">
+        <div class="ok"></div>
+    </div>
+    <div>
+    	<img src="gym_img/Notification_01.png" width="270" height="348" usemap="#notific1Map" class="noti" id="notific1">
+        <map name="notific1Map">
+          <area shape="rect" coords="18,197,138,265" href="#" id="reject">
+          <area shape="rect" coords="140,197,257,264" href="#" id="accept">
+        </map>
+        <img src="gym_img/Notification_02.png" width="270" height="348" class="noti" id="notific2">
+      <img src="gym_img/notification_button.png" width="75" height="93" class="noti" id="disable_nodi">
+    </div>
+    <div class="chat">
+   	 	<img src="gym_img/Chat/Base.png" width="768" height="1024" usemap="#Map4">
+         <map name="Map4">
+           <area shape="rect" coords="638,365,685,411" href="#" class="fav">
+           <area shape="rect" coords="526,870,683,949" href="#" id="msg_send">
+           <area shape="rect" coords="55,190,275,269" href="#" class="gym_buddy">
+         </map>
+         <img src="gym_img/Chat/favorite_yellow.png" width="29" height="28" class="fav" id="fav_enable">
+         <img src="gym_img/Chat/Chat_1a.png" width="469" height="51" id="grey_1" class="grey_msg">
+         <img src="gym_img/Chat/Chat_1b.png" width="469" height="51" id="red_1" class="res_msg">
+         <img src="gym_img/Chat/Chat_2a.png" width="469" height="51" id="grey_2" class="grey_msg">
+      	 <img src="gym_img/Chat/Chat_2b.png" width="469" height="51" id="red_2" class="res_msg">
+         <img src="gym_img/Chat/Chat_3a.png" width="469" height="51" id="grey_3" class="grey_msg">
+         <img src="gym_img/Chat/Richard.png" width="374" height="187" class="chat_pic" id="richard_chat">
+         <img src="gym_img/Chat/Rita.png" width="374" height="187" class="chat_pic" id="rita_chat">
+         <img src="gym_img/Chat/Sneha.png" width="374" height="187" class="chat_pic" id="sneha_chat">
+         <img src="gym_img/Chat/Vikram.png" width="374" height="187" class="chat_pic" id="vikram_chat">
+    </div>
+  </div>
+    <div class="virtual">
+    	<img src="gym_img/Start Scanning.png" width="768" height="1024" usemap="#Map3" class="scanning">
+        <map name="Map3">
+          <area shape="rect" coords="263,610,502,690" href="#" id="start_scan">
+        </map>
+        <div class="close_icon"></div>
+        <video id="vid" width="768" height="1024">
+        	<source src="video/Start_Scanning.mp4" type="video/mp4">
+        </video>
+         
+    </div>
+   
+    
+</div>
+</body>
+</html>

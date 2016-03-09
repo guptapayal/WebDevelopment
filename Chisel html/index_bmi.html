@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BMI</title>
+<link rel="stylesheet" href="fonts.css" type="text/css" charset="utf-8" />
+<link href="css/dragdealer.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/dragdealer.js"></script>
+<link href="css/demos.css" type="text/css" rel="stylesheet">
+
+<style>
+body{
+	margin:0px;
+	padding:0px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+   -webkit-user-select: none;
+}
+.wrapper{
+	position:relative;
+	width:768px;
+	height:1024px;
+	margin:0px;
+	padding:0px;
+	overflow:hidden !important;
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+}
+
+.bmi_cal{
+	position:absolute;
+	width:709px;
+	height:822px;
+	top:174px;
+	left:30px;
+	margin:0px;
+	padding:0px;
+	overflow:hidden !important;
+	z-index:9;
+}
+.bmi_cal1{
+	position:absolute;
+	top:295px;
+	left:30px;
+	display:none;
+	z-index:9999;
+}
+
+.gender{
+	position:absolute;
+	width:115px;
+	height:50px;
+	top:323px;
+	right:130px;
+	z-index:99;
+	
+}
+
+.inp{
+	position:absolute;
+	width:140px;
+	height:35px;
+	left:308px;
+	background:none;
+	text-align:center;
+	font-size:25px;
+	font-weight:200;
+	opacity:0.7;
+	border:none;
+	outline:none;
+}
+
+#age{
+	top:330px;
+}
+
+#widt{
+	top:436px;
+}
+
+#heig{
+	top:382px;
+}
+
+#drag {
+	left: 11px;
+    position: absolute;
+    top: 20px;
+	display:none;
+    z-index: 9999;
+}
+
+#icon{
+	position:absolute;
+	top:80px;
+	left:35px;
+	z-index:9999;
+}
+
+.inp2{
+	position:absolute;
+	width:85px;
+	height:20px;
+	left:40px;
+	text-align:center;
+	background:none;
+	opacity:0.7;
+	border:none;
+	font-size:20px;
+	font-weight:200;
+	z-index:99;
+}
+
+#age2{
+	width:50px;
+	top:80px;
+}
+
+#height2{
+	top:159px;
+}
+
+#weight2{
+	top:233px;
+}
+
+#bmi_value{
+	position:absolute;
+	width:95px;
+	height:70px;
+	left:32px;
+	top:305px;
+	text-align:center;
+	background:none;
+	/*opacity:0.7;*/
+	border:none;
+	font-size:30px;
+	font-weight:900;
+	z-index:99;
+}
+	
+.calcu{
+	position:absolute;
+	display:none;
+	left:30px;
+	top:285px;
+	z-index:999;
+}
+
+#graph{
+	position:absolute;
+	display:none;
+	left:0px;
+	top:0px;
+	z-index:999999;
+}
+
+#back{
+	position:absolute;
+	top:-1px;
+}
+#calcu1{
+	position:absolute;
+	left:30px;
+	top:100px;
+	z-index:99;
+}
+#edit2{
+	position:absolute;
+	left:0px;
+	top:-3px;
+	z-index:9;
+}
+
+.base{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+	z-index:999;
+}
+.vid{
+	position:absolute;
+	top:175px;
+	left:30px;
+	
+	
+}
+.idal_bmi{
+	position:absolute;
+	top:302.4px;
+	left:30px;
+	display:none;
+	z-index:9999;
+}
+
+#ideal_bmi{
+	position:absolute;
+	width:95px;
+	height:70px;
+	left:32px;
+	top:415px;
+	text-align:center;
+	background:none;
+	border:none;
+	font-size:30px;
+	font-weight:900;
+	z-index:99;
+}
+
+input{
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+	color:#6d6e72;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+</style>
+
+<script>
+	$(document).ready(function(e) {
+		var i=j=k=0;
+		
+        $("#f").on("click", function(){
+			
+			
+			(i++ % 2) ? ($(this).attr("src","bmi_img/f_grey.png")) : ($(this).attr("src","bmi_img/f_green.png"));
+			console.log("i is "+i);
+			if((i % 2) && (j % 2)) { 
+				$("#m").attr("src","bmi_img/m_grey.png") ;
+				 $(this).attr("src","bmi_img/f_green.png");
+				 j++;
+			}
+			return false;
+		});
+		$("#m").on("click", function(){
+			(j++ % 2) ? ($(this).attr("src","bmi_img/m_grey.png")) : ($(this).attr("src","bmi_img/m_green.png"));
+			console.log("j is "+j);
+			if((i % 2) && (j % 2)) { 
+				$("#f").attr("src","bmi_img/f_grey.png") ;
+				 $(this).attr("src","bmi_img/m_green.png");
+				 i++;
+			}
+			return false;
+			
+		});
+		
+		$("#ideal").on("click", function(){
+				console.log("ideal");
+				$(".idal_bmi").toggle();
+				//$(".bmi_cal1").show();
+				k == 1 ? $(".bmi_cal1").show():$(".bmi_cal1").toggle();
+				$("#graph").hide();
+			return false;
+		});
+		function claculate_bmi(a,b,c){
+				$('input[name=age]').val(a);
+				$('input[name=height1]').val(b);
+				$('input[name=weight1]').val(c);
+				var bm = (c/((b/100) *(b/100)));
+				console.log(bm);
+				// fix 2 digits after decimal point
+				bm = parseFloat(Math.round(bm * 100) / 100).toFixed(2);
+				//or
+				//	bm = bm.toFixed(2);
+				$('input[name=bmi_val]').val(bm);
+		}
+		$(".text img").on("click", function(){
+				var a = document.getElementById("age2").value;
+				var b = document.getElementById("height2").value;
+				var c = document.getElementById("weight2").value;
+				console.log("A "+ a +" B "+ b + " C "+c);
+				claculate_bmi(a,b,c);
+				
+			});
+		$("#calculate").on("click", function(){
+				k = 1;
+				$(".calcu").toggle();
+				var a = document.getElementById("age").value;
+				var b = document.getElementById("heig").value;
+				var c = document.getElementById("widt").value;
+				console.log("A "+ a +" B "+ b + " C "+c);
+				claculate_bmi(a,b,c);
+				
+				
+				//drag gealer function
+				$("#drag").toggle();
+				$("#graph").hide();
+				$(".bmi_cal1").show();
+				$(function() {
+					var sum=0;
+					new Dragdealer('content-scroller', {
+					  horizontal: true,
+					  vertical: false,
+					  tapping: false,
+					  x:1,
+					 
+					  animationCallback: function(x, y) {
+						 
+							console.log(x);
+							count = Math.round(x * 75);
+							sum += count = 75-count;
+							console.log(count);
+							if(sum ==75 ){count=0}
+							if((count >= 0) && (count <10 ))
+							  count = '0'+count;
+							else if ((count >= 10) && (count < 100 ))
+							  count = count;
+							$('.text img').attr('src','bmi_img/drag_images/bmi000'+count+'.jpg');
+					  }
+					});
+						
+				});
+				return false;
+			});
+		$("#bmi_home").on("click", function(){
+				console.log("home");
+				console.log("calculate");
+				$(".idal_bmi").hide();
+				k == 1 ? $(".bmi_cal1").show():$(".bmi_cal1").hide();
+				return false;
+				
+			});
+		
+		$("#edit").on("click", function(){
+				console.log("video");
+				$("#vid").show();
+				$("#vid").get(0).play();
+				$("#drag").hide();
+				$("#back").hide();
+				$(".bmi_cal").hide();
+				$(".base1").hide();
+				var vid1 = document.getElementById("vid");
+				$(".base").show();
+				setTimeout(function() {
+						$("#back").show();
+						$(".bmi_cal").show();
+						$("#vid").hide();
+						$("#drag").show();
+						$(".base").hide();
+						$(".base1").show();
+			
+  				},11000);
+				return false;
+				
+			});
+		$("#icon").on("click", function(){
+				console.log("hai");
+				$("#graph").toggle();
+				return false;
+			});
+    });
+	
+	
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+	<img src="bmi_img/bg.png" width="768" height="1024" usemap="#Map3" class="base1" >
+    <map name="Map3">
+      <area shape="rect" coords="32,34,739,169" href="popup://1/close">
+    </map> 
+	<div class="bmi_cal">
+        <img src="bmi_img/BMI_base.png" width="709" height="822" usemap="#Map">
+        <map name="Map">
+          <area shape="rect" coords="498,30,650,95" href="#" id = "ideal">
+          <area shape="rect" coords="300,543,580,628" href="#" id="calculate">
+          <area shape="rect" coords="34,24,253,103" href="#" id="bmi_home"> 
+        </map>
+        <input type="number" value="" id="age" class="inp"/>
+        <div class="gender">
+        	<img src="bmi_img/m_grey.png" width="53" height="48" id="m">
+            <img src="bmi_img/f_grey.png" width="53" height="48" id="f">
+        </div>
+        <input type="number" value="" id="heig" class="inp"/>
+        <input type="number" value="" id="widt" class="inp"/>
+    </div>
+    <div class="bmi_cal1">
+        <input type="number" value="" id="age2" class="inp2" name="age">
+        <input type="number" value="" id="height2" class="inp2" name="height1">
+        <input type="number" value="" id="weight2" class="inp2" name="weight1">
+        <input type="number" value="" id="bmi_value" name="bmi_val" readonly>
+        <img src="bmi_img/BMI Claculator.png" width="146" height="441" usemap="#edit2Map" id="edit2">
+        <map name="edit2Map">
+          <area shape="rect" coords="37,393,153,446" href="#" id="edit">
+        </map>
+        
+     </div>
+    <img src="bmi_img/bg.png" width="768" height="1024" class="base">
+    <div class="calcu">
+        
+        <div id="drag" >
+            <div id="content">
+                <div class="text"><img src="" width="686" /></div>
+                <div class="content-scroller">
+                    <div id="content-scroller" class="dragdealer">
+                        <div class="handle red-bar">
+                            <span class="value"><i class="fa fa-bars"></i></span>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    	
+    </div>
+    <div class="vid">
+    	<video id="vid" width="708" height="784">
+        	<source src="video/vid.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="idal_bmi" >
+    	<input type="number" value="22" id="ideal_bmi" readonly/>
+        <img src="bmi_img/Ideal BMI_2.png" width="708" height="680" usemap="#Map2" style="opacity:" >
+        <map name="Map2">
+          <area shape="rect" coords="36,491,149,556" href="#" id="icon">
+        </map>
+        <img src="bmi_img/show_graph.jpg" width="707" height="668" id="graph">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>settings</title>
+ <link rel="stylesheet" href="fonts.css" type="text/css" charset="utf-8" />
+ <script src="js/jquery-1.10.2.js" ></script>
+
+</head>
+<style>
+body{
+	margin:0px;
+	padding:0px;
+ 	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+   -webkit-user-select: none;
+}
+.wrapper{
+	position:absolute;
+	width:768px;
+	height:1024px;
+	top:0px;
+	left:0px;
+	margin:0px;
+	padding:0px;
+	overflow:hidden !important;
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+}
+#notification{
+	position:absolute;
+	right:30px;
+	top:120px;
+	z-index:9;
+}
+.profile{
+	position:absolute;
+	left:28px;
+	top:120px;
+	z-index:9;
+	display:none;
+}
+#prof{
+	position:absolute;
+	left:504px;
+	top:-6px;
+	z-index:9;
+	display:none;
+}
+.inp{
+	position:absolute;
+	width:190px;
+	height:22px;
+	left:275px;
+	text-align:center;
+	border:none;
+	font-size:18px;
+	background:none;
+}
+
+#name{
+	top:45px;
+}
+
+#last_name{
+	top:95px;
+}
+#location{
+	top:145px;
+}
+.inp1{
+	position:absolute;
+	width:35px;
+	height:22px;
+	top:205px;
+	text-align:center;
+	border:none;
+	font-size:18px;
+	background:none;
+}
+#weight1{
+	left:395px;
+}
+#height1{
+	left:223px;
+}
+#bmi{
+	left:200px;
+	top:258px;
+}
+
+.inp2{
+	position:absolute;
+	width:200px;
+	height:22px;
+	top:377px;
+	text-align:center;
+	border:none;
+	font-size:18px;
+	background:none;
+}
+#fav_cousine{
+	left:30px;
+}
+#fav_workout{
+	right:30px;
+}
+.veg{
+	position:absolute;
+	right:25px;
+	top:260px;
+	z-index:99;
+}
+.trainer{
+	position:absolute;
+	right:281px;
+	bottom:109px;
+	z-index:99;
+}
+.grey_col{
+	position:absolute;
+	width:310px;
+	height:50px;
+	left:97px;
+	top:460px;
+	z-index:999;
+}
+.grey_col img{
+	float:left;
+	padding:5px;
+}
+#pic{
+	position:absolute;
+	top:170px;
+	left:20px;
+	display:none;
+	z-index:999;
+}
+#pic_selected{
+	position:absolute;
+	top:50px;
+	left:22px;
+	display:none;
+	z-index:99;
+}
+input{
+	font-family:'Conv_Corbert-Regular',Sans-Serif;
+	color:#6d6e72;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+</style>
+<script>
+$(document).ready(function(e) {
+	var count= count1 = count2 = count3 = count4 = count5 = count6 = 0;
+	$("#off").hide();
+	$("#off1").hide();
+	$("#bg").on("click", function(){
+		location.href="popup://7/close";
+	});
+    $("#profile_button").on("click", function(){
+		$(".profile").show();
+		$("#prof").show();
+		
+	});
+	$("#prof").on("click", function(){
+		$("#prof").hide();
+		$(".profile").hide();
+	});
+	$(".veg").on("click", function(){
+		$("#off").toggle();	
+	});
+	$(".trainer").on("click", function(){
+		$("#off1").toggle();	
+	});
+	$(".done").on("click", function(){
+		$("#name, #last_name, #location, #weight1, #height1, #bmi, #fav_cousine, #fav_workout").val(" ");
+		$("#off").hide();	
+		$("#off1").hide();	
+		$(".profile").hide();
+		$(".s").attr("src","settings_img/gs.png")
+		$(".m").attr("src","settings_img/gm.png")
+		$(".t").attr("src","settings_img/gt.png")
+		$(".w").attr("src","settings_img/gw.png")
+		$(".th").attr("src","settings_img/gt.png")
+		$(".f").attr("src","settings_img/gf.png")
+		$(".sa").attr("src","settings_img/gs.png")
+		count= count1 = count2 = count3 = count4 = count5 = count6 = 0;
+	});
+	
+	$(".s").on("click", function(){
+			(count++ % 2) ? ($(".s").attr("src","settings_img/gs.png")) : ($(".s").attr("src","settings_img/s.png"));
+			return false;
+	});
+	$(".m").on("click", function(){
+			(count1++ % 2) ? ($(".m").attr("src","settings_img/gm.png")) : ($(".m").attr("src","settings_img/m.png"));
+			return false;
+	});
+	$(".t").on("click", function(){
+			(count2++ % 2) ? ($(".t").attr("src","settings_img/gt.png")) : ($(".t").attr("src","settings_img/t.png"));
+			return false;
+	});
+	$(".w").on("click", function(){
+			(count3++ % 2) ? ($(".w").attr("src","settings_img/gw.png")) : ($(".w").attr("src","settings_img/w.png"));
+			return false;
+	});
+	$(".th").on("click", function(){
+			(count4++ % 2) ? ($(".th").attr("src","settings_img/gt.png")) : ($(".th").attr("src","settings_img/t.png"));
+			return false;
+	});
+	$(".f").on("click", function(){
+			(count5++ % 2) ? ($(".f").attr("src","settings_img/gf.png")) : ($(".f").attr("src","settings_img/f.png"));
+			return false;
+	});
+	$(".sa").on("click", function(){
+			(count6++ % 2) ? ($(".sa").attr("src","settings_img/gs.png")) : ($(".sa").attr("src","settings_img/s.png"));
+			return false;
+	});
+	
+	$(".choose_pic").on("click", function(){
+		$("#pic").show();
+	});
+	$("#select_pic").on("click", function(){
+		$("#pic").hide();
+		$("#pic_selected").show();
+	});
+	
+});
+</script>
+<body>
+<div class="wrapper">
+	<img src="settings_img/trans_bg.png" width="768" height="1024" id="bg"/>
+  <img src="settings_img/notification_bar.png" width="200" height="288" usemap="#notificationMap" id="notification"/>
+  <map name="notificationMap">
+    <area shape="rect" coords="5,4,191,72" href="#" id="profile_button">
+  </map>
+    <div class="profile">
+    	<img src="settings_img/profile02.png" width="212" height="79" id="prof"/>
+    	<img src="settings_img/profi_img.png" width="501" height="665" usemap="#Map"/>
+        <map name="Map">
+          <area shape="rect" coords="289,605,390,647" href="#"  class="done">
+          <area shape="rect" coords="395,600,484,646" href="#" class="done">
+          <area shape="rect" coords="22,34,139,214" href="#" class="choose_pic">
+        </map>
+		<input type="text" value="" id="name" class="inp">
+        <input type="text" value="" id="last_name" class="inp">
+        <input type="text" value="" id="location" class="inp">
+        <input type="number" value="" id="height1" class="inp1">
+        <input type="number" value="" id="weight1" class="inp1">
+        <input type="number" value="" id="bmi" class="inp1">
+        <input type="text" value="" id="fav_cousine" class="inp2">
+        <input type="text" value="" id="fav_workout" class="inp2">
+        <img src="settings_img/image.png" width="110" height="110" id="pic_selected" class="choose_pic"/>
+        <img class="veg" id="on" src="settings_img/yes_button.png" width="60" height="26"/>
+        <img class="veg" id="off" src="settings_img/no_button.png" width="60" height="26"/>
+        <img class="trainer" id="on1" src="settings_img/yes_button.png" width="60" height="26"/>
+        <img class="trainer" id="off1" src="settings_img/no_button.png" width="60" height="26"/>
+        <img src="settings_img/profpic_popup.png" width="463" height="208" usemap="#picMap" id="pic"/>
+        <map name="picMap">
+          <area shape="rect" coords="42,44,166,171" href="#" id="select_pic">
+        </map>
+        <div class="grey_col">
+            <img src="settings_img/gs.png" width="34" height="34" class="s">
+            <img src="settings_img/gm.png" width="34" height="34" class="m">
+            <img src="settings_img/gt.png" width="34" height="34" class="t">
+            <img src="settings_img/gw.png" width="34" height="34" class="w">
+            <img src="settings_img/gt.png" width="34" height="34" class="th">
+            <img src="settings_img/gf.png" width="34" height="34" class="f">
+            <img src="settings_img/gs.png" width="34" height="34" class="sa">
+        </div>
+    </div>
+</div>
+</body>
+</html>
